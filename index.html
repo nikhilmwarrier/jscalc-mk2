@@ -2,31 +2,71 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <link rel="manifest" href="manifest.json" />
     <link rel="stylesheet" href="styles.css" />
-    <script src="MathCalc.js"></script>
     <script src="app.js" defer></script>
-    <title>jscalc-mk2</title>
+    <title>Doodly</title>
   </head>
   <body>
-    <div id="main">
-      <div class="header">
-        <h1>jscalc-mk2</h1>
+    <a id="dl-link">Download your image</a>
+    <canvas id="canvas">
+      <p>Oops! Canvas not supported!</p>
+    </canvas>
+    <div class="toolbar">
+      <div class="hitbox" onclick="toggleToolbarVisibility('.toolbar')"></div>
+      <div
+        tabindex="0"
+        class="handle"
+        onclick="toggleToolbarVisibility('.toolbar')"
+      ></div>
+      <div class="tools-grid">
+        <div class="tool" id="pen" onclick="penMode()">Pen</div>
+        <div class="tool" id="eraser" onclick="eraserMode()">Eraser</div>
+        <!-- <div class="tool" id="pen"> -->
+        <div
+          class="tool"
+          id="thickness-adjust-btn"
+          onclick="showPopup('#thickness-popup')"
+        >
+          <span class="thickness-indicator"></span>
+        </div>
+        <div class="popup popup-hidden" id="thickness-popup">
+          <p>Thickness</p>
+          <input
+            type="range"
+            id="thickness-adjust"
+            class="slider"
+            min="5"
+            max="30"
+          />
+        </div>
+        <label class="tool color-picker" id="pseudo-color-picker">
+          <input
+            type="color"
+            onchange="updatePicker('#pseudo-color-picker', this.value)"
+            class="color-picker-input"
+          />
+        </label>
       </div>
-
-      <div id="output"></div>
-
-      <form id="exp-input">
-        <input
-          type="text"
-          id="input"
-          autofocus
-          autocomplete="off"
-          placeholder="Your expression here [use 'pi' for Pi]"
-        />
-        <button type="submit">Go!</button> <br />
-      </form>
-      <button id="clear">Clear output</button>
     </div>
+    <script>
+      //ServiceWorker registration begin
+
+      if ("serviceWorker" in navigator) {
+        console.log("Service worker supported!");
+        window.addEventListener("load", () => {
+          navigator.serviceWorker
+            .register("sw.js")
+            .then((reg) => console.log("Service Worker Registered!"))
+            .catch((err) => console.log("Service Worker: Error: ${err}"));
+        });
+      }
+
+      //sw.js reg. end
+    </script>
   </body>
 </html>
