@@ -6,8 +6,8 @@
   "scope": "/",
   "display": "standalone",
   "start_url": "./",
-  "background_color": "#2d805a",
-  "theme_color": "#2d805a",
+  "background_color": "#41b883",
+  "theme_color": "#41b883",
   "description": "A js calculator app",
   "orientation": "any",
   "icons": [
