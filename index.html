@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="MathCalc.js"></script>
+    <script src="app.js" defer></script>
+    <title>jscalc-mk2</title>
+  </head>
+  <body>
+    <div id="main">
+      <div class="header">
+        <h1>jscalc-mk2</h1>
+      </div>
+
+      <div id="output"></div>
+
+      <form id="exp-input">
+        <input
+          type="text"
+          id="input"
+          autofocus
+          autocomplete="off"
+          placeholder="Your expression here [use 'pi' for Pi]"
+        />
+        <button type="submit">Go!</button> <br />
+      </form>
+      <button id="clear">Clear output</button>
+    </div>
+  </body>
+</html>

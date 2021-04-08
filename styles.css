@@ -1,0 +1,118 @@
+@import url("https://fonts.googleapis.com/css2?family=Fira+Mono&family=Roboto&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  background: #ccc;
+}
+
+h1 {
+  font-family: "Roboto", sans-serif;
+  color: #fff;
+  font-weight: normal;
+  text-align: center;
+  padding: 5px;
+  font-size: 2rem;
+  background: #2d805a;
+}
+
+#exp-input {
+  width: calc(100% - 10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-family: "Fira Mono", monospace;
+  grid-area: input;
+  background: white;
+  border-radius: 5px 5px 0 0;
+  margin: 0 5px;
+  border-top: 3px solid #fff;
+}
+#exp-input input {
+  width: 100%;
+  padding: 10px 20px;
+  font-size: 1rem;
+  background: #ffffff;
+  border: none;
+  color: #303030;
+  font-family: "Fira Mono", monospace;
+  text-transform: lowercase;
+}
+#exp-input input:focus {
+  outline: none;
+}
+#exp-input button {
+  cursor: pointer;
+  width: 10%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  font-size: 1rem;
+  font-family: "Roboto", sans-serif;
+}
+#exp-input button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #0084ff;
+}
+#exp-input:focus-within {
+  border-top-color: #41b883;
+}
+
+.header {
+  grid-area: header;
+  background: #cccccc;
+}
+
+#output {
+  grid-area: output;
+  overflow-x: auto;
+}
+#output p {
+  font-size: 1.2rem;
+  font-family: "Fira Mono", monospace;
+  color: #111;
+  padding: 10px;
+  margin: 10px;
+}
+#output .input {
+  color: #222;
+  font-size: 1rem;
+}
+
+#main {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-rows: 50px 1fr 50px;
+  grid-template-areas: "header" "output" "input";
+}
+
+#clear {
+  cursor: pointer;
+  background: #41b883;
+  border: none;
+  padding: 10px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  border-radius: 0 0 0 5px;
+  font: 1rem "Roboto", sans-serif;
+  color: #fff;
+  box-shadow: 1px 0 1px 1px rgba(56, 56, 56, 0.5);
+}
+#clear:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #0084ff;
+}
+
+/*# sourceMappingURL=styles.css.map */
