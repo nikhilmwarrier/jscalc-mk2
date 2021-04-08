@@ -1,11 +1,28 @@
 {
-  "name": "Dood.ly",
-  "short_name": "Dood.ly",
-  "theme_color": "#333333",
-  "background_color": "#333333",
-  "display": "fullscreen",
-  "start_url": "index.html",
+  "dir": "ltr",
+  "lang": "en",
+  "name": "JScalc 2",
+  "short_name": "jsc",
+  "scope": "/",
+  "display": "standalone",
+  "start_url": "./",
+  "background_color": "#2d805a",
+  "theme_color": "#2d805a",
+  "description": "A js calculator app",
+  "orientation": "any",
   "icons": [
+    {
+      "src": "res/icon_64.png",
+      "sizes": "64x64",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "res/icon_128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "any"
+    },
     {
       "src": "res/icon_192.png",
       "sizes": "192x192",
@@ -19,5 +36,8 @@
       "type": "image/png",
       "purpose": "any"
     }
-  ]
+  ],
+  "url": "https://jsc2.netlify.app/",
+  "generated": true,
+  "screenshots": []
 }

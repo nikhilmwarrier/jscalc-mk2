@@ -1,162 +1,118 @@
+@import url("https://fonts.googleapis.com/css2?family=Fira+Mono&family=Roboto&display=swap");
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-html {
+html,
+body {
   height: 100%;
   width: 100%;
 }
 
 body {
-  touch-action: none;
-  overscroll-behavior-y: contain; /*Prevent pull-to-refresh*/
-  overflow: hidden;
+  background: #ccc;
+}
+
+h1 {
+  font-family: "Roboto", sans-serif;
+  color: #fff;
+  font-weight: normal;
+  text-align: center;
+  padding: 5px;
+  font-size: 2rem;
+  background: #2d805a;
+}
+
+#exp-input {
+  width: calc(100% - 10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-family: "Fira Mono", monospace;
+  grid-area: input;
+  background: white;
+  border-radius: 5px 5px 0 0;
+  margin: 0 5px;
+  border-top: 3px solid #fff;
+}
+#exp-input input {
+  width: 100%;
+  padding: 10px 20px;
+  font-size: 1rem;
+  background: #ffffff;
+  border: none;
+  color: #303030;
+  font-family: "Fira Mono", monospace;
+  text-transform: lowercase;
+}
+#exp-input input:focus {
+  outline: none;
+}
+#exp-input button {
+  cursor: pointer;
+  width: 10%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  font-size: 1rem;
+  font-family: "Roboto", sans-serif;
+}
+#exp-input button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #0084ff;
+}
+#exp-input:focus-within {
+  border-top-color: #41b883;
+}
+
+.header {
+  grid-area: header;
+  background: #cccccc;
+}
+
+#output {
+  grid-area: output;
+  overflow-x: auto;
+}
+#output p {
+  font-size: 1.2rem;
+  font-family: "Fira Mono", monospace;
+  color: #111;
+  padding: 10px;
+  margin: 10px;
+}
+#output .input {
+  color: #222;
+  font-size: 1rem;
+}
+
+#main {
   height: 100%;
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #333;
+  display: grid;
+  grid-template-rows: 50px 1fr 50px;
+  grid-template-areas: "header" "output" "input";
 }
 
-#dl-link {
+#clear {
   cursor: pointer;
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  padding: 10px 20px;
-  color: #fff;
-  background: #00a767;
-  font-family: "Roboto", sans-serif;
-  margin-right: 10px;
-  border-radius: 5px 5px 0 0;
-}
-
-#dl-link:hover {
-  text-decoration: none;
-  color: #ccc;
-}
-
-#canvas {
-  background: rgb(255, 255, 255);
-  border-radius: 5px;
-  border: 1px solid #333;
-  /* height: 300px; */
-}
-
-.toolbar {
-  position: fixed;
-  bottom: 0;
-  margin: 20px;
-  width: 300px;
-  height: 100px;
-  background: #fff;
-  backdrop-filter: blur(3px);
-  border-radius: 999px;
-  box-shadow: 0 0 25px 5px rgba(160, 160, 160, 0.5);
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  transition: all 0.5s ease;
-}
-
-.toolbar .handle {
-  cursor: pointer;
-  position: absolute;
-  margin: 5px;
-  height: 5px;
-  width: 60px;
-  border-radius: 999px;
-  background: #ccc;
-  top: 0;
-}
-
-.toolbar .hitbox {
-  position: absolute;
-  margin: 0;
-  height: 30px;
-  width: 100%;
-  border-radius: 999px;
-  /* background: rgba(160, 160, 160, 0.5); */
-  top: 0;
-}
-
-.toolbar .handle:focus {
-  outline: none;
-  background: rgb(255, 196, 196);
-}
-
-.toolbar-hidden {
-  bottom: -95px;
-}
-
-.toolbar .tools-grid {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 30px;
-  /* padding-top: 50px; */
-}
-
-.toolbar .tool {
-  cursor: pointer;
-  /* background: rgb(255, 196, 196); */
+  background: #41b883;
+  border: none;
   padding: 10px;
-  border-radius: 999px;
-  font-family: "Roboto", sans-serif;
-  user-select: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  border-radius: 0 0 0 5px;
+  font: 1rem "Roboto", sans-serif;
+  color: #fff;
+  box-shadow: 1px 0 1px 1px rgba(56, 56, 56, 0.5);
+}
+#clear:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #0084ff;
 }
 
-.toolbar .tool:active {
-  background: rgba(160, 160, 160, 0.5);
-}
-
-.toolbar .popup {
-  position: absolute;
-  bottom: 110%;
-  background: #fff;
-  padding: 20px;
-  box-shadow: 0 0 5px 1px rgba(160, 160, 160, 0.5);
-  width: 80%;
-  height: 90%;
-  right: 10%;
-  border-radius: 999px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-direction: column;
-  font-family: "Roboto", sans-serif;
-  transition: all 0.5s ease;
-}
-
-.toolbar .popup-hidden {
-  opacity: 0;
-  bottom: 0;
-  pointer-events: none;
-}
-
-.toolbar .thickness-indicator {
-  border-radius: 50%;
-  display: block;
-  height: 10px;
-  width: 10px;
-  background: #000;
-}
-
-.color-picker-input {
-  opacity: 0;
-  height: 30px;
-  width: 30px;
-  visibility: hidden;
-}
-
-.color-picker {
-  background: #000;
-  width: 30px;
-  height: 30px;
-}
+/*# sourceMappingURL=styles.css.map */
